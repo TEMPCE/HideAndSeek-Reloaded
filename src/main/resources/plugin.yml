@@ -1,0 +1,24 @@
+name: hideandseek
+version: '0.1.3a'
+main: akki697222.hideandseek.Hideandseek
+api-version: '1.20'
+load: STARTUP
+depend: []
+authors: ["あっきー(akki__)"]
+commands:
+  hideandseek:
+    permission: hideandseek.admin
+    aliases: [has]
+    usage: /<command>
+  map:
+    permission: hideandseek.admin
+    usage: /<command>
+  shop:
+    usage: /<command>
+    aliases: [s]
+permissions:
+  hideandseek.*:
+    children:
+      hideandseek.admin: true
+  hideandseek.admin:
+    default: op

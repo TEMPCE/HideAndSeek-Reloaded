@@ -1,0 +1,34 @@
+prefix: "§7[§aHide§8and§cSeek§7]§f "
+
+teamPrefixes:
+  hider: "§7[§aHIDER§7]§f "
+  seeker: "§7[§cSEEKER§7]§f "
+  spectator: "§7[§8SPEC§7]§f "
+  lobby: "§7[§eLOBBY§7]§f "
+  dead: "§7[§4DEAD§7]§f "
+bossbars:
+  defaultTitle: "Hide and Seek"
+game:
+  draw: "引き分け！"
+  seekerWin: "§c鬼§fの勝利"
+  hiderWin: "§a逃げ§fの勝利"
+  deathHider: "%player%は%killer%に見つかってしまった！"
+  deathHiderSingle: "%player%は鬼の威圧に負けた！"
+  deathSeeker: "鬼の%player%は%killer%の逆襲にあった！"
+  deathSeekerSingle: "%player%は心臓発作を起こした！"
+  glow: "残り15秒となったため生存者全員が発光します。"
+  lastPlayer: "%player%が最後の一人だ..."
+  batteries: "バッテリー: %battery%"
+shop:
+  bought: "'%item%§f'を購入しました！"
+  failed: "'%item%§f'を購入できませんでした。%point%ポイント不足しています。"
+  getPoint: "1ポイント獲得しました。"
+team:
+  joinedHider: "あなたは逃げです。鬼から隠れ、逃げ続けてください。制限時間まで逃げ切れば勝利です。"
+  joinedSeeker: "あなたは鬼です。他の人を探し出し、見つけ、捕まえましょう。制限時間までに全員を殺害すれば勝利です。"
+item:
+  batteryDead: "電池切れのようだ..."
+  radar:
+    nothing: "付近にはいないようだ..."
+    foundHider: "誰かが近くで逃げている..."
+    foundSeeker: "鬼が近くで探している..."

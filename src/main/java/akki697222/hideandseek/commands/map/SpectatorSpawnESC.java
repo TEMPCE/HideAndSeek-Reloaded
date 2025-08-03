@@ -1,0 +1,34 @@
+package akki697222.hideandseek.commands.map;
+
+import akki697222.hideandseek.core.GameMap;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+
+import java.util.List;
+
+public class SpectatorSpawnESC implements EditorSubCommand {
+    @Override
+    public void onSubCommand(CommandSender sender, String[] args, String editorMapName) {
+        GameMap gameMap = EditorSC.getNormalAndTempMapsFromName(editorMapName);
+        if (gameMap != null) {
+            if (sender instanceof Player player) {
+                gameMap.setSpectatorSpawn(player.getLocation());
+                sender.sendMessage("マップ '" + editorMapName + "' の観戦者のスポーンを '" + player.getLocation() + "' に設定しました。");
+            } else {
+                sender.sendMessage("§cこの設定はコンソールから編集できません。");
+            }
+        } else {
+            sender.sendMessage("§cマップ '" + editorMapName + "' は存在しません。");
+        }
+    }
+
+    @Override
+    public String getName() {
+        return "spec";
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, String[] args) {
+        return List.of();
+    }
+}
