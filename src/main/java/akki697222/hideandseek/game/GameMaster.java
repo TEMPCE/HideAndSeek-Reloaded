@@ -27,6 +27,7 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 import org.checkerframework.checker.units.qual.A;
+import org.jetbrains.annotations.Nullable;
 import pl.mikigal.config.ConfigAPI;
 import pl.mikigal.config.style.CommentStyle;
 import pl.mikigal.config.style.NameStyle;
@@ -115,10 +116,14 @@ public class GameMaster {
         init(seekers, modes[new Random().nextInt(modes.length)]);
     }
 
+    public static void init(int seekers, Mode mode) {
+        init(seekers, mode, null);
+    }
+
     /**
      * init for next games
      */
-    public static void init(int seekers, Mode mode) {
+    public static void init(int seekers, Mode mode, @Nullable String map) {
         logger.info("Initializing Game...");
         gameState = GameState.INITIALIZED;
         game = new Game();
@@ -128,6 +133,14 @@ public class GameMaster {
         Collections.shuffle(mapList);
 
         gameMap = mapList.get(0);
+        if (map != null) {
+            for (GameMap m : mapList) {
+                if (m.getName().equals(map)) {
+                    gameMap = m;
+                    break;
+                }
+            }
+        }
 
         if (mapList.size() == 1 && gameMap.getName().equals("empty")) {
             Bukkit.broadcast(Component.text("§cゲームを開始できませんでした。マップを最低でも1つ以上作成する必要があります。"));

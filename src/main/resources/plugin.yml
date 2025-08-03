@@ -1,5 +1,5 @@
 name: hideandseek
-version: '0.1.3b'
+version: '0.1.3b2'
 main: akki697222.hideandseek.Hideandseek
 api-version: '1.20'
 load: STARTUP

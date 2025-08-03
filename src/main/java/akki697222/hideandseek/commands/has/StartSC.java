@@ -18,8 +18,9 @@ public class StartSC implements SubCommand {
     public void onSubCommand(CommandSender sender, String[] args) {
         int value = args.length > 0 ? Integer.parseInt(args[0]) : 1;
         Mode mode = args.length > 1 ? Mode.valueOf(args[1]) : Mode.Normal;
+        String map = args.length > 2 ? args[2] : null;
 
-        GameMaster.init(value, mode);
+        GameMaster.init(value, mode, map);
     }
 
     @Override
