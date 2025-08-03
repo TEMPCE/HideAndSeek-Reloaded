@@ -29,7 +29,7 @@ public class Redbull implements IGameItem {
             potionMeta.displayName(Component.text("レッドブル"));
             potionMeta.lore(List.of(Component.text("翼を授ける～")));
             potionMeta.setColor(Color.RED);
-            potionMeta.addCustomEffect(new PotionEffect(PotionEffectType.SPEED, 20 * 15, 3), true);
+            potionMeta.addCustomEffect(new PotionEffect(PotionEffectType.SPEED, 20 * 15, 2), true);
             item.setItemMeta(potionMeta);
         }
         return item;

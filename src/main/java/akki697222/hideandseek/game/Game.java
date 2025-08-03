@@ -106,15 +106,13 @@ public class Game extends BukkitRunnable {
                 event.deathMessage(Component.text(prefixes(messageConfig.getString("game.deathHiderSingle", "null").replaceAll("%player%", player.getName()))));
             }
         } else if (seeker.hasPlayer(player)) {
-            dead.addPlayer(player);
-            player.setGameMode(GameMode.SPECTATOR);
-            player.getInventory().clear();
             player.clearActivePotionEffects();
             if (player.getKiller() != null) {
                 event.deathMessage(Component.text(prefixes(messageConfig.getString("game.deathSeeker", "null").replaceAll("%player%", player.getName()).replaceAll("%killer%", player.getKiller().getName()))));
             } else {
                 event.deathMessage(Component.text(prefixes(messageConfig.getString("game.deathSeekerSingle", "null").replaceAll("%player%", player.getName()))));
             }
+            player.teleport(gameMap.getSeekerSpawn());
         }
     }
 }

@@ -29,7 +29,7 @@ public class JumpBoost implements IGameItem {
             potionMeta.displayName(Component.text("天使の翼"));
             potionMeta.lore(List.of(Component.text("ジャンプ！")));
             potionMeta.setColor(Color.WHITE);
-            potionMeta.addCustomEffect(new PotionEffect(PotionEffectType.JUMP, 20 * 10, 3), true);
+            potionMeta.addCustomEffect(new PotionEffect(PotionEffectType.JUMP, 20 * 10, 2), true);
             item.setItemMeta(potionMeta);
         }
         return item;
