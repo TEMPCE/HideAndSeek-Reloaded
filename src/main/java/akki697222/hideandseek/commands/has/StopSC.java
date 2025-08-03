@@ -5,6 +5,7 @@ import akki697222.hideandseek.core.Mode;
 import akki697222.hideandseek.game.GameMaster;
 import org.bukkit.command.CommandSender;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

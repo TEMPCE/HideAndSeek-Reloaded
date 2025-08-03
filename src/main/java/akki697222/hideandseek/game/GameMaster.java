@@ -132,6 +132,18 @@ public class GameMaster {
         List<GameMap> mapList = new ArrayList<>(mapsConfig.getMaps());
         Collections.shuffle(mapList);
 
+        for (String entry : hider.getEntries()) {
+            hider.removeEntry(entry);
+        }
+
+        for (String entry : seeker.getEntries()) {
+            seeker.removeEntry(entry);
+        }
+
+        for (String entry : dead.getEntries()) {
+            dead.removeEntry(entry);
+        }
+
         gameMap = mapList.get(0);
         if (map != null) {
             for (GameMap m : mapList) {

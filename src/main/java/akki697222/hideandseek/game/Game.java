@@ -35,6 +35,10 @@ public class Game extends BukkitRunnable {
             end(false, true);
         }
 
+        if (seeker.getEntries().isEmpty() && gameState == GameState.STARTED) {
+            end(false, false);
+        }
+
         if (hider.getEntries().size() == 1 && !lastPlayer) {
             lastPlayer = true;
             Bukkit.broadcast(Component.text(prefixes(messageConfig.getString("game.lastPlayer").replaceAll("%player%", hider.getEntries().iterator().next()))));
@@ -106,13 +110,15 @@ public class Game extends BukkitRunnable {
                 event.deathMessage(Component.text(prefixes(messageConfig.getString("game.deathHiderSingle", "null").replaceAll("%player%", player.getName()))));
             }
         } else if (seeker.hasPlayer(player)) {
-            player.clearActivePotionEffects();
             if (player.getKiller() != null) {
                 event.deathMessage(Component.text(prefixes(messageConfig.getString("game.deathSeeker", "null").replaceAll("%player%", player.getName()).replaceAll("%killer%", player.getKiller().getName()))));
             } else {
                 event.deathMessage(Component.text(prefixes(messageConfig.getString("game.deathSeekerSingle", "null").replaceAll("%player%", player.getName()))));
             }
-            player.teleport(gameMap.getSeekerSpawn());
+            Bukkit.getScheduler().runTaskLater(plugin, () -> {
+                player.teleport(gameMap.getSeekerSpawn());
+                player.setGameMode(GameMode.ADVENTURE);
+            }, 10L);
         }
     }
 }

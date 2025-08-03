@@ -1,12 +1,16 @@
 package akki697222.hideandseek.commands.has;
 
 import akki697222.hideandseek.commands.SubCommand;
+import akki697222.hideandseek.core.GameMap;
 import akki697222.hideandseek.core.Mode;
 import akki697222.hideandseek.game.GameMaster;
 import org.bukkit.command.CommandSender;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import static akki697222.hideandseek.Hideandseek.mapsConfig;
 
 public class StartSC implements SubCommand {
     @Override
@@ -25,8 +29,15 @@ public class StartSC implements SubCommand {
 
     @Override
     public List<String> onTabComplete(CommandSender sender, String[] args) {
-        if (args.length >= 2) {
+        if (args.length == 2) {
             return Arrays.stream(Mode.values()).map(Enum::name).toList();
+        } else if (args.length == 3) {
+            List<GameMap> mapList = new ArrayList<>(mapsConfig.getMaps());
+            List<String> mapNames = new ArrayList<>();
+            for (GameMap gameMap : mapList) {
+                mapNames.add(gameMap.getName());
+            }
+            return mapNames;
         }
 
         return List.of();

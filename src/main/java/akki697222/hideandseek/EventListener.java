@@ -56,7 +56,7 @@ public class EventListener implements Listener {
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
-        if (gameState == GameState.STARTED) {
+        if (gameState == GameState.PREPARE || gameState == GameState.STARTED) {
             game.onPlayerDeath(event);
         } else if (gameState == GameState.UNINITIALIZED) {
             event.getPlayer().teleport(settings.getLobbyLocation());
