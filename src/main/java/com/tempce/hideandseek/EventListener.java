@@ -4,6 +4,7 @@ import com.tempce.hideandseek.core.game.GameState;
 import com.tempce.hideandseek.core.item.AbstractGameItem;
 import com.tempce.hideandseek.core.item.Items;
 import com.tempce.hideandseek.core.item.items.ProtectionShield;
+import net.kyori.adventure.sound.Sound;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -87,6 +88,14 @@ public class EventListener implements Listener {
                     player.teleport(hiderPlayers.getFirst());
                 }
                 player.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 60, 255));
+                player.playSound(
+                        Sound.sound(
+                                org.bukkit.Sound.BLOCK_BEACON_DEACTIVATE,
+                                Sound.Source.MASTER,
+                                1.0f,
+                                1.0f
+                        )
+                );
             } else {
                 game.onPlayerDeath(event);
             }

@@ -4,9 +4,14 @@ import com.tempce.hideandseek.core.Mode;
 import com.tempce.hideandseek.core.event.GameEvent;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
+import org.bukkit.Color;
 import org.bukkit.GameMode;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -119,21 +124,33 @@ public class Game extends BukkitRunnable {
             Bukkit.getScheduler().runTaskLater(plugin, () -> {
                 player.teleport(gameMap.getSeekerSpawn());
                 player.setGameMode(GameMode.ADVENTURE);
-                switch (mode) {
-                    case Normal -> {
-                        player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 2, false, false));
-                    }
-                    case Hard -> {
-                        player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 3, false, false));
-                        player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, Integer.MAX_VALUE, 255, false, false));
-                    }
-                    case Insane -> {
-                        player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 5, false, false));
-                        player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, Integer.MAX_VALUE, 255, false, false));
-                        player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP_BOOST, Integer.MAX_VALUE, 2, false, false));
-                    }
-                }
+                applySeekerDefaultSets(player);
             }, 2L);
         }
+    }
+
+    public static void applySeekerDefaultSets(Player player) {
+        switch (mode) {
+            case Normal -> {
+                player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 2, false, false));
+            }
+            case Hard -> {
+                player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 3, false, false));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, Integer.MAX_VALUE, 255, false, false));
+            }
+            case Insane -> {
+                player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 5, false, false));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, Integer.MAX_VALUE, 255, false, false));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP_BOOST, Integer.MAX_VALUE, 2, false, false));
+            }
+        }
+        ItemStack leatherChest = new ItemStack(Material.LEATHER_CHESTPLATE);
+        ItemMeta meta = leatherChest.getItemMeta();
+        if (meta instanceof LeatherArmorMeta armorMeta) {
+            armorMeta.setColor(Color.RED);
+            armorMeta.setUnbreakable(true);
+            leatherChest.setItemMeta(meta);
+        }
+        player.getInventory().setChestplate(leatherChest);
     }
 }

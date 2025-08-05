@@ -1,5 +1,5 @@
 name: hideandseek
-version: '0.2.2'
+version: '0.2.2a'
 main: com.tempce.hideandseek.Hideandseek
 api-version: '1.21'
 load: STARTUP

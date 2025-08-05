@@ -61,7 +61,17 @@ public class ProtectionShield extends AbstractGameItem {
                 )
         );
         Bukkit.getScheduler().runTaskLater(plugin, () -> {
-            shieldedPlayers.remove(player);
+            if (shieldedPlayers.contains(player)) {
+                player.playSound(
+                        Sound.sound(
+                                org.bukkit.Sound.BLOCK_BEACON_DEACTIVATE,
+                                Sound.Source.MASTER,
+                                1.0f,
+                                1.0f
+                        )
+                );
+                shieldedPlayers.remove(player);
+            }
         }, config.getInt("duration") * 20L);
     }
 

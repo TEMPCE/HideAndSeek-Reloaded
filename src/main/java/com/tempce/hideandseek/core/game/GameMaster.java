@@ -236,20 +236,7 @@ public class GameMaster {
             if (player != null) {
                 playerPoints.put(playerName, settings.getDefaultPlayerPoints());
                 player.clearActivePotionEffects();
-                switch (mode) {
-                    case Normal -> {
-                        player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 2, false, false));
-                    }
-                    case Hard -> {
-                        player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 3, false, false));
-                        player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, Integer.MAX_VALUE, 255, false, false));
-                    }
-                    case Insane -> {
-                        player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 5, false, false));
-                        player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, Integer.MAX_VALUE, 255, false, false));
-                        player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP_BOOST, Integer.MAX_VALUE, 2, false, false));
-                    }
-                }
+                Game.applySeekerDefaultSets(player);
                 PlayerInventory inventory = player.getInventory();
                 ItemStack seekerAxe = new ItemStack(Material.NETHERITE_AXE);
                 ItemMeta meta = seekerAxe.getItemMeta();
