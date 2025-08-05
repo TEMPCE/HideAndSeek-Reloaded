@@ -18,9 +18,8 @@ import static com.tempce.hideandseek.core.game.GameMaster.scoreboard;
 public class AreaRadar extends AbstractGameItem {
     public AreaRadar() {
         super("area_radar");
-        if (!config.contains("range")) {
-            config.set("range", 30);
-        }
+        if (!config.contains("range")) config.set("range", 30);
+        if (!config.contains("batteryConsumes")) config.set("batteryConsumes", 1);
     }
 
     @Override
@@ -62,7 +61,7 @@ public class AreaRadar extends AbstractGameItem {
             } else {
                 player.sendMessage(messageConfig.getString("item.radar.nothing"));
             }
-            playerBatteries.replace(playerName, playerBatteries.get(playerName) - 1);
+            playerBatteries.replace(playerName, playerBatteries.get(playerName) - config.getInt("batteryConsumes"));
         } else {
             player.sendMessage(messageConfig.getString("item.batteryDead"));
         }

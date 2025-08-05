@@ -14,11 +14,13 @@
   "event": {
     //イベントタイプを指定します。タイプと中身については下で解説しています。
     "type": "effect",
-    "effect": {
-      "type": "speed",
-      "duration": 200,
-      "amplifier": 10
-    }
+    "effect": [
+      {
+        "type": "speed",
+        "duration": 200,
+        "amplifier": 10
+      }
+    ]
   }
 }
 ```
@@ -32,6 +34,17 @@
 - `amplifier` (int) \- エフェクトの効果の強さです。
 - `ambient` (bool,optional) \- エフェクトが薄くなるらしい？
 - `particles` (bool,optional) \- trueに設定するとエフェクトのパーティクルを消すことができます。
+### `entity_player`
+- 特定のプレイヤーの場所にエンティティをスポーンさせます。
+- `entity` (string) \- スポーンさせるエンティティのidです。(例: zombieなど `minecraft:`などのネームスペースは入れない)
+- `amount` (int) \- スポーンさせるエンティティの数です。
+- `nbt` (json) \- スポーンさせるエンティティにnbtを設定できます。
+- `target_player` (string[]) \- スポーンさせる対象のプレイヤーの名前が入る配列です。
+### `give`
+- forリスト内のチームに特定のアイテムを配布します。
+- `material` (string) \- 配布するアイテムのマテリアルです。org.bukkit.Materialのものの名前をそのまま持ってきてください。(例: DIAMOND_SWORDなど)
+- `amount` (int) \- 配布するアイテムの数です。
+- `nbt` (json) \- 配布するアイテムのNBTです。
 ### `custom`
 - `type` (string) \- カスタムイベントのタイプです。現在は`class`のみが用意されています。
 ### '`custom`' イベントのタイプ

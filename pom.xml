@@ -6,7 +6,7 @@
 
     <groupId>akki697222</groupId>
     <artifactId>hideandseek</artifactId>
-    <version>0.2.0</version>
+    <version>0.2.1</version>
     <packaging>jar</packaging>
 
     <name>hideandseek</name>
@@ -67,6 +67,10 @@
             <id>minebench-repo</id>
             <url>https://repo.minebench.de/</url>
         </repository>
+        <repository>
+            <id>codemc-repo</id>
+            <url>https://repo.codemc.io/repository/maven-public/</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -93,6 +97,12 @@
             <artifactId>gson</artifactId>
             <version>2.13.1</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.tr7zw</groupId>
+            <artifactId>item-nbt-api-plugin</artifactId>
+            <version>2.15.1</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>

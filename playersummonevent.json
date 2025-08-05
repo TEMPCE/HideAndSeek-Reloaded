@@ -1,0 +1,18 @@
+{
+  "id": "test",
+  "name": "テスト",
+  "desc": "イベントの例",
+  "mode": "Normal",
+  "for": ["hider", "seeker"],
+  "event": {
+    "type": "entity_player",
+    "entity_player": {
+      "entity": "zombie",
+      "amount": 3,
+      "target_player": [
+        "akki__"
+      ],
+      "nbt": {}
+    }
+  }
+}

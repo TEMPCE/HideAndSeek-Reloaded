@@ -1,10 +1,9 @@
 package com.tempce.hideandseek.core.item.items;
 
-import com.tempce.hideandseek.core.item.AbstractGameItem;
+import com.tempce.hideandseek.core.item.PotionItem;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Color;
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.potion.PotionEffect;
@@ -13,9 +12,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class Redbull extends AbstractGameItem {
+public class Redbull extends PotionItem {
     public Redbull() {
-        super("redbull");
+        super("redbull", 300, 2);
     }
 
     @Override
@@ -29,27 +28,12 @@ public class Redbull extends AbstractGameItem {
     }
 
     @Override
-    public @NotNull ItemStack getItem() {
-        ItemStack item = new ItemStack(Material.SPLASH_POTION, 1);
-        PotionMeta potionMeta = (PotionMeta) item.getItemMeta();
-
-        if (potionMeta != null) {
-            potionMeta.displayName(getDisplayName());
-            potionMeta.lore(List.of(Component.text("翼を授ける～")));
-            potionMeta.setColor(Color.RED);
-            potionMeta.addCustomEffect(new PotionEffect(PotionEffectType.SPEED, 20 * 15, 2), true);
-            item.setItemMeta(potionMeta);
-        }
-        return item;
+    public PotionEffectType getEffectType() {
+        return PotionEffectType.SPEED;
     }
 
     @Override
-    public void onUse(Player player) {
-
-    }
-
-    @Override
-    public void tick() {
-
+    public List<Component> getLore() {
+        return List.of(Component.text("翼を授ける"));
     }
 }

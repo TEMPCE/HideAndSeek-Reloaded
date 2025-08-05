@@ -12,6 +12,7 @@ import org.jetbrains.annotations.NotNull;
 public class KnockbackStick extends AbstractGameItem {
     public KnockbackStick() {
         super("knockback_stick");
+        if (!config.contains("knockbackLevel")) config.set("knockbackLevel", 8);
     }
 
     @Override
@@ -33,7 +34,7 @@ public class KnockbackStick extends AbstractGameItem {
             meta.setDamage(60);
             item.setItemMeta(meta);
         }
-        item.addUnsafeEnchantment(Enchantment.KNOCKBACK, 8);
+        item.addUnsafeEnchantment(Enchantment.KNOCKBACK, config.getInt("knockbackLevel"));
         return item;
     }
 

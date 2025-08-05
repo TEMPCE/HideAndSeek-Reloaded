@@ -6,12 +6,14 @@
   "for": ["hider"],
   "event": {
     "type": "effect",
-    "effect": {
-      "type": "invisibility",
-      "duration": 300,
-      "amplifier": 255,
-      "ambient": false,
-      "particles": false
-    }
+    "effect": [
+      {
+        "type": "invisibility",
+        "duration": 300,
+        "amplifier": 255,
+        "ambient": false,
+        "particles": false
+      }
+    ]
   }
 }

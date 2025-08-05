@@ -1,6 +1,7 @@
 package com.tempce.hideandseek.core.item.items;
 
 import com.tempce.hideandseek.core.item.AbstractGameItem;
+import com.tempce.hideandseek.core.item.PotionItem;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Color;
 import org.bukkit.Material;
@@ -13,9 +14,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class JumpBoost extends AbstractGameItem {
+public class JumpBoost extends PotionItem {
     public JumpBoost() {
-        super("jump_boost");
+        super("jump_boost", 200, 2);
     }
 
     @Override
@@ -29,27 +30,12 @@ public class JumpBoost extends AbstractGameItem {
     }
 
     @Override
-    public @NotNull ItemStack getItem() {
-        ItemStack item = new ItemStack(Material.SPLASH_POTION, 1);
-        PotionMeta potionMeta = (PotionMeta) item.getItemMeta();
-
-        if (potionMeta != null) {
-            potionMeta.displayName(getDisplayName());
-            potionMeta.lore(List.of(Component.text("ジャンプ！")));
-            potionMeta.setColor(Color.WHITE);
-            potionMeta.addCustomEffect(new PotionEffect(PotionEffectType.JUMP_BOOST, 20 * 10, 2), true);
-            item.setItemMeta(potionMeta);
-        }
-        return item;
+    public PotionEffectType getEffectType() {
+        return PotionEffectType.JUMP_BOOST;
     }
 
     @Override
-    public void onUse(Player player) {
-
-    }
-
-    @Override
-    public void tick() {
-
+    public List<Component> getLore() {
+        return List.of(Component.text("ジャンプ！"));
     }
 }

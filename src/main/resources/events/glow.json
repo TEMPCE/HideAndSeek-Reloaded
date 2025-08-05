@@ -6,10 +6,12 @@
   "for": ["hider", "seeker"],
   "event": {
     "type": "effect",
-    "effect": {
-      "type": "glowing",
-      "duration": 200,
-      "amplifier": 255
-    }
+    "effect": [
+      {
+        "type": "glowing",
+        "duration": 200,
+        "amplifier": 255
+      }
+    ]
   }
 }

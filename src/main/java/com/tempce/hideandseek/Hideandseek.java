@@ -75,9 +75,6 @@ public final class Hideandseek extends JavaPlugin {
         saveResource("events/speed.json", false);
         saveResource("events/readme.md", false);
 
-        saveResource("items/", false);
-        saveResource("items/area_radar.json", false);
-
         loadEvents();
 
         // final init

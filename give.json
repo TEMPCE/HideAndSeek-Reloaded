@@ -1,0 +1,23 @@
+{
+  "id": "give",
+  "name": "giveのテスト",
+  "desc": "giveイベントの例",
+  "mode": "Normal",
+  "for": ["hider", "seeker"],
+  "event": {
+    "type": "give",
+    "give": [
+      {
+        "material": "TORCH",
+        "amount": 16,
+        "nbt": {
+          "display": {
+            "Name": {
+              "text": "Super Torch"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

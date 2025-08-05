@@ -6,10 +6,12 @@
   "for": ["hider", "seeker"],
   "event": {
     "type": "effect",
-    "effect": {
-      "type": "blindness",
-      "duration": 200,
-      "amplifier": 255
-    }
+    "effect": [
+      {
+        "type": "blindness",
+        "duration": 200,
+        "amplifier": 255
+      }
+    ]
   }
 }

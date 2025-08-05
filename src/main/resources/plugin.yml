@@ -1,9 +1,9 @@
 name: hideandseek
-version: '0.2.0'
+version: '0.2.1'
 main: com.tempce.hideandseek.Hideandseek
 api-version: '1.21'
 load: STARTUP
-depend: []
+depend: [NBTAPI]
 authors: ["あっきー(akki__)"]
 commands:
   hideandseek:

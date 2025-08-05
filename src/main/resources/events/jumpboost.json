@@ -6,10 +6,12 @@
   "for": ["hider","seeker"],
   "event": {
     "type": "effect",
-    "effect": {
-      "type": "jump_boost",
-      "duration": 300,
-      "amplifier": 2
-    }
+    "effect": [
+      {
+        "type": "jump_boost",
+        "duration": 300,
+        "amplifier": 2
+      }
+    ]
   }
 }

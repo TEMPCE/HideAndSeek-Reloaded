@@ -6,10 +6,12 @@
   "for": ["hider"],
   "event": {
     "type": "effect",
-    "effect": {
-      "type": "speed",
-      "duration": 300,
-      "amplifier": 2
-    }
+    "effect": [
+      {
+        "type": "speed",
+        "duration": 300,
+        "amplifier": 2
+      }
+    ]
   }
 }

@@ -15,6 +15,7 @@ import static com.tempce.hideandseek.Hideandseek.playerBatteries;
 public class BatteryPack extends AbstractGameItem {
     public BatteryPack() {
         super("battery_pack");
+        if (!config.contains("batteryRecoveries")) config.set("batteryRecoveries", 3);
     }
 
     @Override
@@ -34,7 +35,7 @@ public class BatteryPack extends AbstractGameItem {
         if (meta != null) {
             meta.displayName(getDisplayName());
             meta.lore(List.of(
-                    Component.text("§7使用するとバッテリーが3回復します")
+                    Component.text("§7使用するとバッテリーが" + config.getInt("batteryRecoveries") + "回復します")
             ));
             compass.setItemMeta(meta);
         }
@@ -44,7 +45,7 @@ public class BatteryPack extends AbstractGameItem {
     @Override
     public void onUse(Player player) {
         player.getInventory().remove(player.getInventory().getItemInMainHand());
-        playerBatteries.replace(player.getName(), playerBatteries.get(player.getName()) + 3);
+        playerBatteries.replace(player.getName(), playerBatteries.get(player.getName()) + config.getInt("batteryRecoveries"));
     }
 
     @Override
