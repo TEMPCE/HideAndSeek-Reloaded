@@ -1,12 +1,11 @@
 package com.tempce.hideandseek.commands.has;
 
-import com.tempce.hideandseek.Hideandseek;
 import com.tempce.hideandseek.commands.SubCommand;
 import org.bukkit.command.CommandSender;
 
 import java.util.List;
 
-import static com.tempce.hideandseek.Hideandseek.*;
+import static com.tempce.hideandseek.Hideandseek.plugin;
 
 public class ReloadSC implements SubCommand {
     @Override
@@ -16,11 +15,9 @@ public class ReloadSC implements SubCommand {
 
     @Override
     public void onSubCommand(CommandSender sender, String[] args) {
-        sender.sendMessage("Reloading Configs...");
+        sender.sendMessage("Reloading...");
         plugin.reloadConfig();
-        sender.sendMessage("Reloading Events...");
-        events.clear();
-        loadEvents();
+        sender.sendMessage("Reloaded");
     }
 
     @Override

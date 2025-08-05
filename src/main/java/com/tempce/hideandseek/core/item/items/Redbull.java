@@ -2,11 +2,6 @@ package com.tempce.hideandseek.core.item.items;
 
 import com.tempce.hideandseek.core.item.PotionItem;
 import net.kyori.adventure.text.Component;
-import org.bukkit.Color;
-import org.bukkit.Material;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.PotionMeta;
-import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.jetbrains.annotations.NotNull;
 

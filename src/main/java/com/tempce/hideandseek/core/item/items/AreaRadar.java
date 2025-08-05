@@ -12,7 +12,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-import static com.tempce.hideandseek.Hideandseek.*;
+import static com.tempce.hideandseek.Hideandseek.messageConfig;
+import static com.tempce.hideandseek.Hideandseek.playerBatteries;
 import static com.tempce.hideandseek.core.game.GameMaster.scoreboard;
 
 public class AreaRadar extends AbstractGameItem {

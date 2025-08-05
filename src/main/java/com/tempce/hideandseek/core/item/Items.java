@@ -7,7 +7,8 @@ public enum Items {
     Redbull(new Redbull()),
     KnockbackStick(new KnockbackStick()),
     JumpBoost(new JumpBoost()),
-    BatteryPack(new BatteryPack())
+    BatteryPack(new BatteryPack()),
+    ProtectionShield(new ProtectionShield()),
     ;
 
     final AbstractGameItem item;

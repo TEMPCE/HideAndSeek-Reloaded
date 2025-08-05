@@ -1,7 +1,7 @@
 package com.tempce.hideandseek.commands;
 
-import com.tempce.hideandseek.core.game.Shop;
 import com.tempce.hideandseek.core.game.GameState;
+import com.tempce.hideandseek.core.game.Shop;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

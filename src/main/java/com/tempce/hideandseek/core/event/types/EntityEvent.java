@@ -2,8 +2,6 @@ package com.tempce.hideandseek.core.event.types;
 
 import de.tr7zw.nbtapi.NBT;
 import org.bukkit.Bukkit;
-import org.bukkit.NamespacedKey;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;

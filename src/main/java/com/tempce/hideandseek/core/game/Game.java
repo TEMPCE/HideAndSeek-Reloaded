@@ -12,7 +12,6 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import javax.annotation.Nonnull;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

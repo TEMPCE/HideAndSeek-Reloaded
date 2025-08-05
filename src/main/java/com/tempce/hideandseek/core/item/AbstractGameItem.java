@@ -7,7 +7,6 @@ import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nonnull;
 import java.io.File;
-import java.nio.file.Path;
 
 import static com.tempce.hideandseek.Hideandseek.plugin;
 

@@ -1,8 +1,9 @@
 package com.tempce.hideandseek;
 
+import com.tempce.hideandseek.core.game.GameState;
 import com.tempce.hideandseek.core.item.AbstractGameItem;
 import com.tempce.hideandseek.core.item.Items;
-import com.tempce.hideandseek.core.game.GameState;
+import com.tempce.hideandseek.core.item.items.ProtectionShield;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -15,10 +16,17 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
-import static com.tempce.hideandseek.Hideandseek.*;
+import static com.tempce.hideandseek.Hideandseek.plugin;
+import static com.tempce.hideandseek.Hideandseek.settings;
 import static com.tempce.hideandseek.core.game.GameMaster.*;
 
 public class EventListener implements Listener {
@@ -41,7 +49,7 @@ public class EventListener implements Listener {
             joniedPlayer.clearActivePotionEffects();
             joniedPlayer.getInventory().clear();
             joniedPlayer.setGameMode(GameMode.ADVENTURE);
-            joniedPlayer.setHealth(joniedPlayer.getAttribute(Attribute.MAX_HEALTH).getBaseValue());
+            healPlayer(joniedPlayer);
             joniedPlayer.teleport(settings.getLobbyLocation());
         }
     }
@@ -51,28 +59,50 @@ public class EventListener implements Listener {
         Player movedPlayer = event.getPlayer();
 
         if (seeker.hasPlayer(movedPlayer) && gameState == GameState.PREPARE) {
-            movedPlayer.setHealth(movedPlayer.getAttribute(Attribute.MAX_HEALTH).getBaseValue());
+            healPlayer(movedPlayer);
             event.setCancelled(true);
         }
     }
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
+        Player player = event.getPlayer();
         if (gameState == GameState.STARTED) {
-            game.onPlayerDeath(event);
+            if (ProtectionShield.shieldedPlayers.contains(player) && hider.hasPlayer(player)) {
+                event.setCancelled(true);
+
+                ProtectionShield.shieldedPlayers.remove(player);
+
+                healPlayer(player);
+                List<Player> hiderPlayers = hider
+                        .getEntries()
+                        .stream()
+                        .map(Bukkit::getPlayer)
+                        .filter(Objects::nonNull)
+                        .collect(Collectors.toList());
+                Collections.shuffle(hiderPlayers);
+                if (hiderPlayers.isEmpty()) {
+                    player.teleport(gameMap.getHiderSpawn());
+                } else {
+                    player.teleport(hiderPlayers.getFirst());
+                }
+                player.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 60, 255));
+            } else {
+                game.onPlayerDeath(event);
+            }
         } else if (gameState == GameState.PREPARE) {
-            if (seeker.hasPlayer(event.getPlayer())) {
+            if (seeker.hasPlayer(player)) {
                 Bukkit.getScheduler().runTaskLater(plugin, () -> {
-                    event.getPlayer().teleport(gameMap.getSeekerSpawn());
+                    player.teleport(gameMap.getSeekerSpawn());
                 }, 2L);
             } else {
                 Bukkit.getScheduler().runTaskLater(plugin, () -> {
-                    event.getPlayer().teleport(gameMap.getHiderSpawn());
+                    player.teleport(gameMap.getHiderSpawn());
                 }, 2L);
             }
         } else if (gameState == GameState.UNINITIALIZED) {
             Bukkit.getScheduler().runTaskLater(plugin, () -> {
-                event.getPlayer().teleport(settings.getLobbyLocation());
+                player.teleport(settings.getLobbyLocation());
             }, 2L);
         }
     }
@@ -97,4 +127,11 @@ public class EventListener implements Listener {
         }
     }
 
+    public static double getMaxHealth(Player player) {
+        return Objects.requireNonNull(player.getAttribute(Attribute.MAX_HEALTH)).getBaseValue();
+    }
+
+    public static void healPlayer(Player player) {
+        player.setHealth(getMaxHealth(player));
+    }
 }

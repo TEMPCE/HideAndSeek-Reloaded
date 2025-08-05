@@ -4,7 +4,9 @@ import com.tempce.hideandseek.commands.SubCommand;
 import com.tempce.hideandseek.core.map.GameMap;
 import org.bukkit.command.CommandSender;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static com.tempce.hideandseek.Hideandseek.mapsConfig;
 

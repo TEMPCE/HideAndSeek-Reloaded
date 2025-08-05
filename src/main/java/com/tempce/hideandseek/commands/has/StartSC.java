@@ -1,9 +1,9 @@
 package com.tempce.hideandseek.commands.has;
 
 import com.tempce.hideandseek.commands.SubCommand;
-import com.tempce.hideandseek.core.map.GameMap;
 import com.tempce.hideandseek.core.Mode;
 import com.tempce.hideandseek.core.game.GameMaster;
+import com.tempce.hideandseek.core.map.GameMap;
 import org.bukkit.command.CommandSender;
 
 import java.util.ArrayList;

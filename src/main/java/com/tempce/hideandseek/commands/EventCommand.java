@@ -1,14 +1,14 @@
 package com.tempce.hideandseek.commands;
 
-import static com.tempce.hideandseek.Hideandseek.*;
 import com.tempce.hideandseek.core.event.GameEvent;
 import com.tempce.hideandseek.core.game.GameMaster;
 import com.tempce.hideandseek.core.game.GameState;
-import com.tempce.hideandseek.core.map.GameMap;
 import org.bukkit.command.CommandSender;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.tempce.hideandseek.Hideandseek.events;
 
 public class EventCommand extends CommandBase {
     public EventCommand() {

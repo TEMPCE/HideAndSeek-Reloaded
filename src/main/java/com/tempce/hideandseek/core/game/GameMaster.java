@@ -1,9 +1,9 @@
 package com.tempce.hideandseek.core.game;
 
-import com.tempce.hideandseek.core.map.GameMap;
-import com.tempce.hideandseek.core.Mode;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+import com.tempce.hideandseek.core.Mode;
+import com.tempce.hideandseek.core.map.GameMap;
 import net.kyori.adventure.sound.Sound;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -24,7 +24,10 @@ import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 
 import static com.tempce.hideandseek.Hideandseek.*;
 

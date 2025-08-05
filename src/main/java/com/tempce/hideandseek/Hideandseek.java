@@ -6,10 +6,11 @@ import com.tempce.hideandseek.commands.EventCommand;
 import com.tempce.hideandseek.commands.ShopCommand;
 import com.tempce.hideandseek.commands.has.HaSCommand;
 import com.tempce.hideandseek.commands.map.MapCommand;
-import com.tempce.hideandseek.core.map.Maps;
 import com.tempce.hideandseek.core.Settings;
-import com.tempce.hideandseek.core.event.*;
+import com.tempce.hideandseek.core.event.EventParser;
+import com.tempce.hideandseek.core.event.GameEvent;
 import com.tempce.hideandseek.core.game.GameMaster;
+import com.tempce.hideandseek.core.map.Maps;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -64,7 +65,7 @@ public final class Hideandseek extends JavaPlugin {
         getCommand("event").setExecutor(new EventCommand());
 
         //regsiter events
-        saveResource("events/", false);
+        if (!new File(getDataFolder(), "events").exists()) new File(getDataFolder(), "events").mkdir();
         saveResource("events/blindness.json", false);
         saveResource("events/glow.json", false);
         saveResource("events/invisible_hider.json", false);
@@ -76,6 +77,8 @@ public final class Hideandseek extends JavaPlugin {
         saveResource("events/readme.md", false);
 
         loadEvents();
+
+        if (!new File(getDataFolder(), "items").exists()) new File(getDataFolder(), "items").mkdir();
 
         // final init
         GameMaster.postInit();
@@ -93,9 +96,11 @@ public final class Hideandseek extends JavaPlugin {
             saveResource("message.yml", false);
         }
         messageConfig = YamlConfiguration.loadConfiguration(messageFile);
+        loadEvents();
     }
 
     public static void loadEvents() {
+        events.clear();
         File eventsFolder = new File(plugin.getDataFolder(), "events");
         File[] files = eventsFolder.listFiles((dir, name) -> name.endsWith(".json"));
 
