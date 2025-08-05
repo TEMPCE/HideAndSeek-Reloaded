@@ -1,0 +1,17 @@
+{
+  "id": "invisible_hider",
+  "name": "息を潜めて...",
+  "desc": "逃げが15秒間透明化します。",
+  "mode": "Hard",
+  "for": ["hider"],
+  "event": {
+    "type": "effect",
+    "effect": {
+      "type": "invisibility",
+      "duration": 300,
+      "amplifier": 255,
+      "ambient": false,
+      "particles": false
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "speed",
+  "name": "スピードアップ",
+  "desc": "逃げの足が15秒間早くなります。",
+  "mode": "Normal",
+  "for": ["hider"],
+  "event": {
+    "type": "effect",
+    "effect": {
+      "type": "speed",
+      "duration": 300,
+      "amplifier": 2
+    }
+  }
+}

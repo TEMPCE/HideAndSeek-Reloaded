@@ -6,13 +6,13 @@
 
     <groupId>akki697222</groupId>
     <artifactId>hideandseek</artifactId>
-    <version>0.1.3c</version>
+    <version>0.2.0</version>
     <packaging>jar</packaging>
 
     <name>hideandseek</name>
 
     <properties>
-        <java.version>17</java.version>
+        <java.version>21</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -79,13 +79,19 @@
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
-            <version>1.20.4-R0.1-SNAPSHOT</version>
+            <version>1.21.4-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>pl.mikigal</groupId>
             <artifactId>ConfigAPI</artifactId>
             <version>1.2.6</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.13.1</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

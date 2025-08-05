@@ -1,0 +1,14 @@
+{
+  "id": "shuffle",
+  "name": "シャッフル",
+  "desc": "逃げの位置がランダムに入れ替わります。",
+  "mode": "Normal",
+  "for": ["hider"],
+  "event": {
+    "type": "custom",
+    "custom": {
+      "type": "class",
+      "class": "com.tempce.hideandseek.core.event.custom.ShuffleGameEvent"
+    }
+  }
+}

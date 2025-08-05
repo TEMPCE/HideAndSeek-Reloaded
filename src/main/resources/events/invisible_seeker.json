@@ -1,0 +1,17 @@
+{
+  "id": "invisible_seeker",
+  "name": "恐怖",
+  "desc": "鬼が15秒間透明化します。",
+  "mode": "Hard",
+  "for": ["seeker"],
+  "event": {
+    "type": "effect",
+    "effect": {
+      "type": "invisibility",
+      "duration": 300,
+      "amplifier": 255,
+      "ambient": false,
+      "particles": false
+    }
+  }
+}

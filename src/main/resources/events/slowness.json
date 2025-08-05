@@ -1,0 +1,17 @@
+{
+  "id": "slowness",
+  "name": "ぎっくり腰",
+  "desc": "逃げの速度が15秒間低下します。",
+  "mode": "Normal",
+  "for": ["hider"],
+  "event": {
+    "type": "effect",
+    "effect": {
+      "type": "slowness",
+      "duration": 300,
+      "amplifier": 1,
+      "ambient": false,
+      "particles": false
+    }
+  }
+}

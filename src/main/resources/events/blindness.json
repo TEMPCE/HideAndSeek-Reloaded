@@ -1,0 +1,15 @@
+{
+  "id": "blindness",
+  "name": "停電",
+  "desc": "10秒間すべてのプレイヤーに盲目が付与されます。",
+  "mode": "Hard",
+  "for": ["hider", "seeker"],
+  "event": {
+    "type": "effect",
+    "effect": {
+      "type": "blindness",
+      "duration": 200,
+      "amplifier": 255
+    }
+  }
+}

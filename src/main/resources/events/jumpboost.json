@@ -1,0 +1,15 @@
+{
+  "id": "jumpboost",
+  "name": "跳躍力",
+  "desc": "15秒間すべてのプレイヤーの跳躍力が上昇します。",
+  "mode": "Hard",
+  "for": ["hider","seeker"],
+  "event": {
+    "type": "effect",
+    "effect": {
+      "type": "jump_boost",
+      "duration": 300,
+      "amplifier": 2
+    }
+  }
+}

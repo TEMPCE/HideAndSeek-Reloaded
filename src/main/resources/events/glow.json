@@ -1,0 +1,15 @@
+{
+  "id": "glow",
+  "name": "ピカピカ",
+  "desc": "10秒間すべてのプレイヤーが発光します。",
+  "mode": "Hard",
+  "for": ["hider", "seeker"],
+  "event": {
+    "type": "effect",
+    "effect": {
+      "type": "glowing",
+      "duration": 200,
+      "amplifier": 255
+    }
+  }
+}
