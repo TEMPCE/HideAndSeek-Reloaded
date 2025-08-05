@@ -53,6 +53,12 @@ public class Shop {
             click.getGui().draw();
             return true;
         }, component2String(Items.BatteryPack.getItem().getDisplayName()), "§7購入に2ポイントが必要です。"));
+        //プロテクションシールド
+        gui.addElement(new StaticGuiElement('6', Items.ProtectionShield.getItem().getItem(), 1, click -> {
+            buy(player, Items.ProtectionShield, freeItems ? 0 : 3);
+            click.getGui().draw();
+            return true;
+        }, component2String(Items.ProtectionShield.getItem().getDisplayName()), "§7購入に3ポイントが必要です。"));
         //ポイント数確認用
         gui.addElement(new DynamicGuiElement('0', (viewer) -> new StaticGuiElement('0', new ItemStack (Material.DIAMOND),
                 click -> {

@@ -50,6 +50,7 @@ public class ProtectionShield extends AbstractGameItem {
 
     @Override
     public void onUse(Player player) {
+        player.getInventory().remove(player.getInventory().getItemInMainHand());
         shieldedPlayers.add(player);
         player.playSound(
                 Sound.sound(

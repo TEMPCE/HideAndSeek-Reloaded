@@ -81,7 +81,7 @@ public class EventListener implements Listener {
                         .filter(Objects::nonNull)
                         .collect(Collectors.toList());
                 Collections.shuffle(hiderPlayers);
-                if (hiderPlayers.isEmpty()) {
+                if (hiderPlayers.size() == 1) {
                     player.teleport(gameMap.getHiderSpawn());
                 } else {
                     player.teleport(hiderPlayers.getFirst());
